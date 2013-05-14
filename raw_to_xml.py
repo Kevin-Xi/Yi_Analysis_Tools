@@ -23,9 +23,11 @@ while line:
 	else:
 		no_yao += 1
 		if no_yao == 1 or no_yao == 6:
-			f_xml.write('    <yao p="%s" no="%d">%s</yao>\n' % (line[9:line.find('：', 9)], no_yao, line[18:line.find('\n', 18)]))
+			#f_xml.write('    <yao p="%s" no="%d">%s</yao>\n' % (line[9:line.find('：', 9)], no_yao, line[18:line.find('\n', 18)]))
+			f_xml.write('    <yao p="%s" no="%d">%s</yao>\n' % (line[9:12], no_yao, line[line.find('：'):line.find('\n')]))
 		else:
-			f_xml.write('    <yao p="%s" no="%d">%s</yao>\n' % (line[6:line.find('：', 6)], no_yao, line[18:line.find('\n', 18)]))
+			#f_xml.write('    <yao p="%s" no="%d">%s</yao>\n' % (line[6:line.find('：', 6)], no_yao, line[18:line.find('\n', 18)]))
+			f_xml.write('    <yao p="%s" no="%d">%s</yao>\n' % (line[6:9], no_yao, line[line.find('：'):line.find('\n')]))
 
 f_xml.write('</gua>\n\n')
 
