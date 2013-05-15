@@ -47,12 +47,8 @@ def main(argv):
 		yflag = 0
 
 		try:
-			opts ,args = getopt.getopt(argv, 's:g:y:ah')
-		except getopt.GetoptError:
-			usage()
-			sys.exit(2)
+			opts, args = getopt.getopt(argv, 's:g:y:ah')	#the args should be here to take the junk
 
-		try:
 			for opt, arg in opts:
 				if opt == 'h':
 					usage()
@@ -68,7 +64,11 @@ def main(argv):
 					if yflag > 6 or yflag < 1:
 						raise ArgOutofRangeError
 				elif opt == '-a':
-					(gflag, yflag) = (0, 0)		#if have -a, disregard -g and -y
+					(gflag, yflag) = (0, 0)		#HOW TO PROCESS OVERWRITE CONFLICT BETWEEN g, y and a
+		except getopt.GetoptError:
+			usage()
+			sys.exit(2)
+		#except ArgOutofRangeError, ValueError:			#WHY CANNOT???????
 		except:
 			usage()
 			sys.exit(3)
@@ -77,4 +77,8 @@ def main(argv):
 		print y.output()
 
 if __name__ == '__main__':
+	if len(sys.argv) <= 1:
+		usage()
+		sys.exit()
+
 	main(sys.argv[1:])
