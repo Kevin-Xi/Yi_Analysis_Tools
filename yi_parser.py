@@ -98,7 +98,6 @@ def usage():
 	print __doc__
 
 def main(argv):
-	start = time.clock()
 	xmlfile = 'yi.xml'
 	gflag = 0
 	yflag = 0
@@ -143,10 +142,6 @@ def main(argv):
 			for j in range(6):
 				run(xmlfile, i+1, j+1)
 	
-	end = time.clock()
-	print 'time:', end - start
-
-
 def run(xmlfile, gflag, yflag):	
 	y = Yi_parser(xmlfile, gflag, yflag)
 	print y.output()
